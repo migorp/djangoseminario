@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/mvp.css"> 
+  <title>Datos del Dispositivo</title>
+</head>
+<body>
+  
+  <form method="post" action="{% url 'dispositivo_form' cliente.id %}">
+      <img src="https://live.staticflickr.com/5723/22919843673_622c53e3ae_b.jpg" alt="" width="70%" />
+      <h3>Registro de Datos del Dispositivo</h3>
+      {% csrf_token %}
+      <input type="hidden" name="cliente_id" value="{{ id_cliente }}">
+      {{ form.as_p }}
+      <input type="submit" value="Siguiente">
+  </form>
+  
+</body>
+</html>

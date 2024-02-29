@@ -1,0 +1,21 @@
+cd Ticket-de-Soporte
+conda create --name ticket3 python=3.10
+conda activate ticket3
+pip install Django==3.*
+django-admin startproject holamundo
+cd .\holamundo\
+pip install mysqlclient
+python manage.py startapp ticketsoporte
+code .
+
+python manage.py makemigrations
+python manage.py migrate
+
+python manage.py createsuperuser
+mopadmin
+mop@mop.mop
+123
+
+python manage.py runserver
+
+pip freeze > requirements.txt

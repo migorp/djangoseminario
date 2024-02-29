@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/mvp.css"> 
+  <title>Actualizar estado</title>
+</head>
+<body>
+  
+</body>
+</html>
+
+{% block content %}
+  <img src="https://live.staticflickr.com/5723/22919843673_622c53e3ae_b.jpg" alt="" width="30%" />
+  <h2>Actualizar Estado de Incidencia</h2>
+
+  <form method="post" action="">
+    {% csrf_token %}
+    {{ form.estado.label_tag }} {{ form.estado }}
+    {{ form.descripcion_corta.label_tag }} {{ form.descripcion_corta }}
+    {{ form.estado_fisico.label_tag }} {{ form.estado_fisico }}
+    {{ form.costo.label_tag }} {{ form.costo }}
+    {{ form.resultado_incidencia.label_tag }} {{ form.resultado_incidencia }}
+    {{ form.sugerencias.label_tag }} {{ form.sugerencias }}
+    <input type="submit" value="Actualizar">
+  </form>
+
+  <br>
+  <a href="{% url 'gestion_clientes' %}">Volver al Listado de Incidencias</a>
+  <br><br>
+  <p>_</p>
+{% endblock %}

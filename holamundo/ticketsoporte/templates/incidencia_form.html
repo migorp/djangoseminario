@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/mvp.css"> 
+  <title>Datos de la Incidencia</title>
+</head>
+<body>
+  
+  <form method="post" action="{% url 'incidencia_form' cliente.id dispositivo.id %}">
+      <img src="https://live.staticflickr.com/5723/22919843673_622c53e3ae_b.jpg" alt="" width="70%" />
+      <h3>Registro de Incidencia</h3>
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="submit" value="Finalizar">
+  </form>
+  
+</body>
+</html>

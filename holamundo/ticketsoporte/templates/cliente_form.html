@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/mvp.css"> 
+  <title>Datos del Cliente</title>
+</head>
+<body>
+  
+  <form method="post" action="{% url 'cliente_form' %}">
+      <img src="https://live.staticflickr.com/5723/22919843673_622c53e3ae_b.jpg" alt="" width="70%" />
+      <h3>Registro de Datos de Cliente</h3>
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="submit" value="Siguiente">
+    </form>
+
+    <br><br>
+    <h3><a href="{% url 'buscar_incidencia' %}">Regresar al Inicio</a></h3>
+    <br><br>
+    <p>_</p>
+</body>
+</html>
+

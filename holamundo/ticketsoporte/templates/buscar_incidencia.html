@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/mvp.css"> 
+  <title>Inicio</title>
+</head>
+<body>
+
+    
+    <br>
+    <form method="post" action="{% url 'buscar_incidencia' %}">
+        <img src="https://live.staticflickr.com/5723/22919843673_622c53e3ae_b.jpg" alt="" width="60%" />
+        <h3>Busqueda de Ticket de soporte técnico</h3>
+
+        <br>
+
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Buscar</button>
+    </form>
+    
+    {% if incidencia %}
+    <section >
+        <aside>    
+            <strong>ID:</strong> {{ incidencia.id }}<br>
+            <strong>Cliente:</strong> {{ incidencia.cliente.nombre }}<br>
+            <strong>Dispositivo:</strong> {{ incidencia.dispositivo.get_tipo_display }}<br>
+            <strong>Descripción Corta:</strong> {{ incidencia.descripcion_corta }}<br>
+            <strong>Estado:</strong> {{ incidencia.get_estado_display }}<br>
+            {% if incidencia.costo is not None %}
+                <strong>Costo:</strong> {{ incidencia.costo }}<br>                
+            {% endif %}
+
+            {% if incidencia.resultado_incidencia is not None %}
+                <strong>Resultado Incidencia:</strong> {{ incidencia.resultado_incidencia }}<br>
+            {% endif %}
+            {% if incidencia.sugerencias is not None %}
+                <strong>Sugerencias:</strong> {{ incidencia.sugerencias }}<br>
+            {% endif %}
+        </aside>
+    </section>
+    {% else %}
+    <p>{{ incidencia }}</p> {# Muestra un mensaje personalizado cuando la incidencia no existe #}
+    {% endif %}
+
+    <br><br>
+    <h3><a href="{% url 'cliente_form' %}">Registrar un Ticket de Soporte técnico</a></h3>
+    <h4><a href="{% url 'gestion_clientes' %}">Gestión de Clientes</a></h4>
+</body>
+</html>
+
+
+
+
+
+

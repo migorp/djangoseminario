@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/mvp.css"> 
+  <title>Gestión de Clientes</title>
+</head>
+<body>
+  
+  {% block content %}
+
+  <section >
+    <aside style="width: 85%">
+      <img src="https://live.staticflickr.com/5723/22919843673_622c53e3ae_b.jpg" alt="" width="30%" />
+
+      <h2>Listado de Incidencias</h2>
+    
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Cliente</th>
+            <th>Dispositivo</th>
+            <th>Fecha de Registro</th>
+            <th>Descripción Corta</th>
+            <th>Estado Físico</th>
+            <th>Estado</th>
+            <th>Actualizar Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for incidencia in incidencias %}
+            <tr>
+              <td>{{ incidencia.id }}</td>
+              <td>{{ incidencia.cliente.nombre }}</td>
+              <td>{{ incidencia.dispositivo }}</td>
+              <td>{{ incidencia.fecha_registro }}</td>
+              <td>{{ incidencia.descripcion_corta }}</td>
+              <td>{{ incidencia.estado_fisico }}</td>
+              <td>{{ incidencia.get_estado_display }}</td>
+              <td><a href="{% url 'actualizar_estado' incidencia.id %}">Actualizar Estado</a></td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </aside>
+  </section>
+  {% endblock %}
+  <h3><a href="{% url 'buscar_incidencia' %}">Regresar al Inicio</a></h3>
+  <br><br>
+  <p>_</p>
+</body>
+</html>
