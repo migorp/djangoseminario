@@ -18,4 +18,11 @@ mop@mop.mop
 
 python manage.py runserver
 
+
+
+
+
+pip freeze
 pip freeze > requirements.txt
+#instala
+pip install -r .\requirements.txt
